@@ -7,20 +7,27 @@ import java.io.*;
 //Constructor for UI window
 
 public class sdk_ui extends JFrame implements ActionListener {
+  int num_functions = 6;
   private JPanel ui_panel = new JPanel();
-  private JButton[] function_buttons = new JButton[6];
-  private JButton[] statement_buttons = new JButton[6];
-  private JButton[] num_pad = new JButton[11];
+  private JButton[] function_buttons = new JButton[num_functions];
+  private JButton[] statement_buttons = new JButton[5];
+  private JButton[] num_pad = new JButton[10];
+  private JButton[] operator_buttons = new JButton[3];
+  private JButton enter_button = new JButton("Enter");
+  private JButton end_statement = new JButton("End");
+  private JTextField strings = new JTextField("Enter String Here");
+  private String[] function_names = new String[num_functions];
   private JButton done_button = new JButton("done");
   private JTextArea codeTxt = new JTextArea(35, 50);
   private JScrollPane codeScrollPane = new JScrollPane(codeTxt);
-  private JLabel functions = new JLabel("Functions");
-  private JLabel statements = new JLabel("Statements");
+  //private JLabel functions = new JLabel("Functions");
+  //private JLabel statements = new JLabel("Statements");
   private Vector<JTextArea> textFieldVector = new Vector<JTextArea>();
   private File temp_name = new File("temp_file.txt");
   private File file_name = new File("Your_textfile.py");
   private Scanner sc_line;
-  int arguments;
+  int num_ints = 0, num_strings = 0;
+  boolean functions = false, loop = false;
 
   sdk_ui() {
     super("SDK Interface"); 
@@ -49,7 +56,9 @@ public class sdk_ui extends JFrame implements ActionListener {
                 break;
         case 5: function_buttons[i] = new JButton("Disconnect car");
                 break;
-      } 
+      }
+      function_names[i] = function_buttons[i].getText();
+      function_names[i] = function_names[i].replace(" ", "_");
       function_buttons[i].addActionListener(this);
       ui_panel.add(function_buttons[i]);
 
@@ -68,16 +77,16 @@ public class sdk_ui extends JFrame implements ActionListener {
         case 4: statement_buttons[i] = new JButton("else if");
                 statement_buttons[i].setEnabled(false);
                 break;
-        case 5: statement_buttons[i] = new JButton("end");
-                statement_buttons[i].setEnabled(false);
-                break;
       }
-      //statement_buttons[i].setLocation(50*i, 20);
-      //statement_buttons[i].setSize(100,30);
       statement_buttons[i].addActionListener(this);
       ui_panel.add(statement_buttons[i]);
-   }
-    for(int i = 0; i < 11; i++) {
+    }
+    end_statement = new JButton("end");
+    end_statement.addActionListener(this);
+    end_statement.setEnabled(false);
+    ui_panel.add(end_statement);
+    
+    for(int i = 0; i < num_pad.length; i++) {
       switch(i) {
         case 0: num_pad[i] = new JButton(i+"");
                 break;
@@ -99,15 +108,31 @@ public class sdk_ui extends JFrame implements ActionListener {
                 break;
         case 9: num_pad[i] = new JButton(i+"");
                 break;
-        case 10: num_pad[i] = new JButton("Enter");
-                break;
       }
       num_pad[i].addActionListener(this);
       num_pad[i].setEnabled(false);
       ui_panel.add(num_pad[i]);
     }
+    for(int i = 0; i < operator_buttons.length; i++){
+      switch(i) {
+        case 0: operator_buttons[i] = new JButton("<");
+                break;
+        case 1: operator_buttons[i] = new JButton(">");
+                break;
+        case 2: operator_buttons[i] = new JButton("=");
+                break;
+      }
+      operator_buttons[i].addActionListener(this);
+      operator_buttons[i].setEnabled(false);
+      ui_panel.add(operator_buttons[i]);
+    }
+    enter_button.addActionListener(this);
+    enter_button.setEnabled(false);
+    ui_panel.add(enter_button);
    	done_button.addActionListener(this);
    	ui_panel.add(done_button);
+   	ui_panel.add(strings);
+   	strings.setEditable(false);
     codeTxt.setFont(new Font("Times New Roman", Font.BOLD, 12));
     codeTxt.setLineWrap(true);
     codeTxt.setWrapStyleWord(true);
@@ -122,33 +147,62 @@ public class sdk_ui extends JFrame implements ActionListener {
     
     if(e.getSource() == function_buttons[0]) {
       textInsert(function_buttons[0].getText(), false);
-      arguments = 2;
+      num_ints = 1;
+      num_strings = 1;
+      strings.setEditable(true);
+      functions = true;
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == function_buttons[1]) {
       textInsert(function_buttons[1].getText(), false);
-      arguments = 2;
+      num_strings = 2;
+      strings.setEditable(true);
+      functions = true;
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == function_buttons[2]) {
       textInsert(function_buttons[2].getText(), false);
-      arguments = 6;
+      num_strings = 3;
+      num_ints = 3;
+      strings.setEditable(true);
+      functions = true;
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == function_buttons[3]) {
       textInsert(function_buttons[3].getText(), false);
-      arguments = 3;
+      num_ints = 2;
+      num_strings = 1;
+      strings.setEditable(true);
+      functions = true;
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == function_buttons[4]) {
       textInsert(function_buttons[4].getText(), false);
-      arguments = 3;
+      num_ints = 2;
+      num_strings = 1;
+      strings.setEditable(true);
+      functions = true;
+      enter_button.setEnabled(true);
     } 
     else if(e.getSource() == function_buttons[function_buttons.length - 1]) {
       textInsert(function_buttons[5].getText(), false);
-      arguments = 1;
+      num_strings = 1;
+      strings.setEditable(true);
+      functions = true;
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == statement_buttons[0]) {
       textInsert(statement_buttons[0].getText(), true);
+      codeTxt.insert(" x in range(", codeTxt.getCaretPosition());
+      all_buttons_switch(function_buttons, false);
+      all_buttons_switch(statement_buttons, false);
+      all_buttons_switch(num_pad, true);
+      num_ints = 2;
+      loop = true;
     }
     else if(e.getSource() == statement_buttons[1]) {
       textInsert(statement_buttons[1].getText(), true);
+      loop = true;
     }
     else if(e.getSource() == statement_buttons[2]) {
       textInsert(statement_buttons[2].getText(), true);
@@ -159,55 +213,114 @@ public class sdk_ui extends JFrame implements ActionListener {
     else if(e.getSource() == statement_buttons[statement_buttons.length - 1]) {
       textInsert(statement_buttons[statement_buttons.length-1].getText(), true);
     }
+    else if(e.getSource() == end_statement) {
+      codeTxt.insert("//End\n", caretPos);
+      end_statement.setEnabled(false);
+      all_buttons_switch(num_pad, false);
+    }
     else if(e.getSource() == num_pad[0]) {
       codeTxt.insert(num_pad[0].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[1]) {
-      codeTxt.insert(num_pad[1].getText(), caretPos);     
+      codeTxt.insert(num_pad[1].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[2]) {
       codeTxt.insert(num_pad[2].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[3]) {
       codeTxt.insert(num_pad[3].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[4]) {
       codeTxt.insert(num_pad[4].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[5]) {
       codeTxt.insert(num_pad[5].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[6]) {
       codeTxt.insert(num_pad[6].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[7]) {
       codeTxt.insert(num_pad[7].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[8]) {
       codeTxt.insert(num_pad[8].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
     else if(e.getSource() == num_pad[9]) {
       codeTxt.insert(num_pad[9].getText(), caretPos);
+      enter_button.setEnabled(true);
     }
-    else if(e.getSource() == num_pad[10]) {
-      arguments--;
-      if(arguments == 0) {
-        codeTxt.insert(")\n", caretPos);
-        all_buttons_switch(function_buttons, true);
+    else if(e.getSource() == operator_buttons[0]) {
+      codeTxt.insert(num_pad[0].getText(), caretPos);
+    }
+    else if(e.getSource() == operator_buttons[1]) {
+      codeTxt.insert(num_pad[1].getText(), caretPos);
+    }
+    else if(e.getSource() == operator_buttons[2]) {
+      for(int i = 0; i < 2; i++) {
+        codeTxt.insert(num_pad[2].getText(), caretPos);
+      }
+    }
+    else if(e.getSource() == enter_button) {
+      if(num_strings > 0) {
+        num_strings--;
+        codeTxt.insert(strings.getText(), codeTxt.getCaretPosition());
+        if(num_strings == 0 && num_ints == 0){
+          codeTxt.insert(")\n", codeTxt.getCaretPosition());
+          functions = false;
+          all_buttons_switch(function_buttons, true);
+          all_buttons_switch(num_pad, false);
+          enter_button.setEnabled(false);
+          done_button.setEnabled(true);
+        }
+        else {
+          codeTxt.insert(", ", codeTxt.getCaretPosition());
+          if(num_strings == 0) {
+            strings.setEditable(false);
+            all_buttons_switch(num_pad, true);
+            num_ints--;
+          }
+        }
+      }
+      else if(num_ints == 0) {
+        if(functions){
+          codeTxt.insert(")\n", caretPos);
+          functions = false;
+          all_buttons_switch(function_buttons, true);
+          all_buttons_switch(num_pad, false);
+          enter_button.setEnabled(false);
+          done_button.setEnabled(true);
+        }
+        else if(loop) {
+          codeTxt.insert("):\n", caretPos);
+          loop = false;
+          all_buttons_switch(function_buttons, true);
+          all_buttons_switch(num_pad, false);
+          end_statement.setEnabled(true);
+        }
+        else {
+          codeTxt.insert(":\n", caretPos);
+          end_statement.setEnabled(true);
+        }
       } else {
         codeTxt.insert(", ", caretPos);
       }
+      enter_button.setEnabled(false);
     }
     else {
       write_file();
       parse_tabs();
-      /*for(int i = 0; i < function_buttons.length; i++) {
-        if(!function_buttons[i].isEnabled()) {
-          function_buttons[i].setEnabled(true);
-        }
-      }*/
       all_buttons_switch(function_buttons, true);
     }
+
   }
 
   public void textInsert(String txt, boolean type) {
@@ -216,21 +329,14 @@ public class sdk_ui extends JFrame implements ActionListener {
     	codeTxt.insert(txt.replace(" ", "_") + "(", caretPos);
     	all_buttons_switch(function_buttons, false);
     	done_button_switch(false);
-        /*for(int i = 0; i < statement_buttons.length; i++) {
-          statement_buttons[i].setEnabled(false);
-        }
-        for(int i = 0; i < num_pad.length;i++) {
-          num_pad[i].setEnabled(true);
-        }*/
     	all_buttons_switch(statement_buttons, false);
-    	all_buttons_switch(num_pad, true);
     }
     else {
       codeTxt.insert(txt + " ", caretPos);
-      /*for(int i = 0; i < statement_buttons.length; i++) {
-   	    statement_buttons[i].setEnabled(false);
-      }*/
       all_buttons_switch(statement_buttons, false);
+      all_buttons_switch(function_buttons, false);
+      all_buttons_switch(num_pad, true);
+      done_button_switch(false);
     }
   }
   public void all_buttons_switch(JButton[] buttons, boolean active) {
@@ -266,6 +372,10 @@ public class sdk_ui extends JFrame implements ActionListener {
       while (sc_line.hasNextLine()) {
         pars = sc_line.nextLine();
         pars = pars.replace("\t", "");
+        for(int i = 0; i < num_functions; i++) {
+          //System.out.println(function_names[i]);
+          pars = pars.replace(function_names[i], "ANKI." + function_names[i]);
+        }
         prog.write("\t"+pars+"\n");
       }
       prog.write("\tANKI_end()\n");
