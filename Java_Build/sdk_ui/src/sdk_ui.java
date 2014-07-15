@@ -27,7 +27,7 @@ public class sdk_ui extends JFrame implements ActionListener {
   private File temp_name = new File("temp_file.txt");
   private File file_name = new File("Your_textfile.py");
   private Scanner sc_line;
-  int num_ints = 0, num_strings = 0, tabCount = 1;
+  int num_ints = 0, num_strings = 0, tab_count = 1, state_count = 0;
   boolean functions = false, loop = false, if_state = false, for_loop = false, while_loop = false;
 
   sdk_ui() {
@@ -130,13 +130,13 @@ public class sdk_ui extends JFrame implements ActionListener {
     enter_button.addActionListener(this);
     enter_button.setEnabled(false);
     ui_panel.add(enter_button);
-   	done_button.addActionListener(this);
-   	ui_panel.add(done_button);
    	ui_panel.add(strings);
    	strings.setEditable(false);
    	string_button.addActionListener(this);
    	string_button.setEnabled(false);
    	ui_panel.add(string_button);
+    done_button.addActionListener(this);
+    ui_panel.add(done_button);
     codeTxt.setFont(new Font("Times New Roman", Font.BOLD, 12));
     codeTxt.setLineWrap(true);
     codeTxt.setWrapStyleWord(true);
@@ -204,6 +204,7 @@ public class sdk_ui extends JFrame implements ActionListener {
       num_ints = 2;
       loop = true;
       for_loop = true;
+      state_count++;
     }
     else if(e.getSource() == statement_buttons[1]) {
       textInsert(statement_buttons[1].getText(), true);
@@ -215,21 +216,40 @@ public class sdk_ui extends JFrame implements ActionListener {
       num_strings = 1;
       num_ints = 1;
       loop = true;
+      state_count++;
     }
     else if(e.getSource() == statement_buttons[2]) {
       textInsert(statement_buttons[2].getText(), true);
+      strings.setEditable(true);
+      string_button.setEnabled(true);
+      num_strings = 1;
+      num_ints = 1;
       if_state = true;
+      state_count++;
     }
     else if(e.getSource() == statement_buttons[3]) {
       textInsert(statement_buttons[3].getText(), true);
+      all_buttons_switch(function_buttons, true);
+      all_buttons_switch(statement_buttons, true);
+      state_count++;
     }
     else if(e.getSource() == statement_buttons[statement_buttons.length - 1]) {
       textInsert("elif ", true);
+      strings.setEditable(true);
+      string_button.setEnabled(true);
+      num_strings = 1;
+      num_ints = 1;
+      if_state = true;
+      state_count++;
     }
     else if(e.getSource() == end_statement) {
       codeTxt.insert("//End\n", caretPos);
-      end_statement.setEnabled(false);
+      state_count--;
+      if(state_count == 0) {
+        end_statement.setEnabled(false);
+      }
       all_buttons_switch(num_pad, false);
+      disable_else();
     }
     else if(e.getSource() == num_pad[0]) {
       codeTxt.insert(num_pad[0].getText(), caretPos);
@@ -272,74 +292,69 @@ public class sdk_ui extends JFrame implements ActionListener {
       enter_button.setEnabled(true);
     }
     else if(e.getSource() == operator_buttons[0]) {
-      codeTxt.insert(operator_buttons[0].getText(), caretPos);
+      codeTxt.insert(operator_buttons[0].getText() + " ", caretPos);
       all_buttons_switch(operator_buttons, false);
       all_buttons_switch(num_pad, true);
       enter_button.setEnabled(true);
     }
     else if(e.getSource() == operator_buttons[1]) {
-      codeTxt.insert(operator_buttons[1].getText(), caretPos);
+      codeTxt.insert(operator_buttons[1].getText() + " ", caretPos);
       all_buttons_switch(operator_buttons, false);
       all_buttons_switch(num_pad, true);
       enter_button.setEnabled(true);
     }
     else if(e.getSource() == operator_buttons[2]) {
       for(int i = 0; i < 2; i++) {
-        codeTxt.insert(operator_buttons[2].getText(), caretPos);
+        codeTxt.insert(operator_buttons[2].getText() + " ", caretPos);
       }
       all_buttons_switch(operator_buttons, false);
       all_buttons_switch(num_pad, true);
       enter_button.setEnabled(true);
     }
     else if(e.getSource() == enter_button) {
-      /*if(num_strings > 0) {
-        num_strings--;
-        codeTxt.insert("'"+strings.getText()+"'", codeTxt.getCaretPosition());
-        if(num_strings == 0 && num_ints == 0){
-          codeTxt.insert(")\n", codeTxt.getCaretPosition());
-          functions = false;
-          all_buttons_switch(function_buttons, true);
-          all_buttons_switch(statement_buttons, true);
-          all_buttons_switch(num_pad, false);
-          enter_button.setEnabled(false);
-          done_button.setEnabled(true);
-        }
-        else {
-          codeTxt.insert(", ", codeTxt.getCaretPosition());
-          if(num_strings == 0) {
-            strings.setEditable(false);
-            all_buttons_switch(num_pad, true);
-            num_ints--;
-          }
-        }
-      }*/
+
       num_ints--;
       if(num_ints == 0) {
+        all_buttons_switch(function_buttons, true);
+        all_buttons_switch(statement_buttons, true);
+        all_buttons_switch(num_pad, false);
+        if(state_count == 0) {
+          done_button.setEnabled(true);
+        }
         if(functions){
           codeTxt.insert(")\n", caretPos);
           functions = false;
-          all_buttons_switch(function_buttons, true);
-          all_buttons_switch(statement_buttons, true);
-          disable_else();
-          all_buttons_switch(num_pad, false);
+          //all_buttons_switch(function_buttons, true);
+          //all_buttons_switch(statement_buttons, true);
+          System.out.println(if_state);
+          if(!if_state) {
+            disable_else();
+          }
+          //all_buttons_switch(num_pad, false);
           enter_button.setEnabled(false);
-          done_button.setEnabled(true);
+          //done_button.setEnabled(true);
         }
         else if(loop) {
           codeTxt.insert("):\n", caretPos);
           loop = false;
-          all_buttons_switch(function_buttons, true);
-          all_buttons_switch(statement_buttons, true);
-          disable_else();
-          all_buttons_switch(num_pad, false);
+          //all_buttons_switch(function_buttons, true);
+          //all_buttons_switch(statement_buttons, true);
+          //all_buttons_switch(num_pad, false);
+          if(!if_state) {
+            disable_else();
+          }
           end_statement.setEnabled(true);
+          //done_button.setEnabled(true);
         }
         else {
           codeTxt.insert(":\n", caretPos);
-          all_buttons_switch(function_buttons, true);
+          /*all_buttons_switch(function_buttons, true);
           all_buttons_switch(statement_buttons, true);
+          all_buttons_switch(num_pad, false);*/
           end_statement.setEnabled(true);
+          //done_button.setEnabled(true);
         }
+
       } else {
         if(!loop){
           codeTxt.insert(", ", caretPos);
@@ -352,7 +367,7 @@ public class sdk_ui extends JFrame implements ActionListener {
     }
     else if(e.getSource() == string_button) {
       num_strings--;
-      if(!loop) {
+      if(!loop &&  !if_state) {
         codeTxt.insert("'"+strings.getText()+"'", codeTxt.getCaretPosition());
         if(num_strings == 0 && num_ints == 0){
           codeTxt.insert(")\n", codeTxt.getCaretPosition());
@@ -361,7 +376,8 @@ public class sdk_ui extends JFrame implements ActionListener {
           all_buttons_switch(statement_buttons, true);
           disable_else();
           all_buttons_switch(num_pad, false);
-          enter_button.setEnabled(false);
+          //enter_button.setEnabled(false);
+          string_button.setEnabled(false);
           done_button.setEnabled(true);
         }
         else {
@@ -369,14 +385,15 @@ public class sdk_ui extends JFrame implements ActionListener {
           if(num_strings == 0) {
             strings.setEditable(false);
             all_buttons_switch(num_pad, true);
-            enter_button.setEnabled(true);
+            //enter_button.setEnabled(true);
             string_button.setEnabled(false);
-            //num_ints--;
           }
         }
       }
       else {
         codeTxt.insert(strings.getText()+" ", codeTxt.getCaretPosition());
+        string_button.setEnabled(false);
+        strings.setEditable(false);
         all_buttons_switch(operator_buttons, true);
       }
     }
