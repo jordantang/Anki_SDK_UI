@@ -357,7 +357,9 @@ public class sdk_ui extends JFrame implements ActionListener {
           loop_switch(true);
           if(!check_content) {
             all_buttons_switch(statement_buttons, true);
-            end_statement.setEnabled(true);
+            if(state_count > 0) {
+            	end_statement.setEnabled(true);
+            }
           }
         }
         all_buttons_switch(num_pad, false);
@@ -432,9 +434,9 @@ public class sdk_ui extends JFrame implements ActionListener {
         if(num_strings == 0 && num_ints == 0){
           codeTxt.insert(")", codeTxt.getCaretPosition());
           functions = false;
-          /*if(if_state) {
+          if(!statement && state_count > 0) {
         	  end_statement.setEnabled(true);
-          }*/
+          }
           if(!statement) {
             codeTxt.insert("\n", codeTxt.getCaretPosition());
             all_buttons_switch(function_buttons, true);
