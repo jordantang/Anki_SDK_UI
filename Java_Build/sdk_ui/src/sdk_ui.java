@@ -7,7 +7,13 @@ import java.io.*;
 //Constructor for UI window
 
 public class sdk_ui extends JFrame implements ActionListener {
-  int num_functions = 6;
+  int num_functions = 6, num_ints = 0, num_strings = 0, 
+		  tab_count = 1, state_count = 0, ascii = 97, temp;
+  boolean functions = false, loop = false, 
+		  if_state = false, for_loop = false, 
+		  while_loop = false, statement = false,
+		  check_content = false;
+  
   private JPanel ui_panel = new JPanel();
   private JButton[] function_buttons = new JButton[num_functions];
   private JButton[] statement_buttons = new JButton[5];
@@ -27,15 +33,11 @@ public class sdk_ui extends JFrame implements ActionListener {
   private File temp_name = new File("temp_file.txt");
   private File file_name = new File("ANKI_sdk_test.py");
   private Scanner sc_line;
-  int num_ints = 0, num_strings = 0, tab_count = 1, state_count = 0, ascii = 97, temp;
-  boolean functions = false, loop = false, 
-      if_state = false, for_loop = false, 
-      while_loop = false, statement = false,
-      check_content = false;
+
 
   sdk_ui() {
     super("SDK Interface"); 
-    setBounds(500,500,1500,1500);
+    setBounds(0,0,1200,800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Container con = this.getContentPane(); // inherit main frame
     con.add(ui_panel); // add the panel to frame
@@ -430,6 +432,9 @@ public class sdk_ui extends JFrame implements ActionListener {
         if(num_strings == 0 && num_ints == 0){
           codeTxt.insert(")", codeTxt.getCaretPosition());
           functions = false;
+          /*if(if_state) {
+        	  end_statement.setEnabled(true);
+          }*/
           if(!statement) {
             codeTxt.insert("\n", codeTxt.getCaretPosition());
             all_buttons_switch(function_buttons, true);
@@ -540,18 +545,18 @@ public class sdk_ui extends JFrame implements ActionListener {
         for(int i = 0; i < tab_count; i++){
           //prog.write("\t"+pars);
           pars = "\t" + pars;
-          if((pars.indexOf("else") != -1 || pars.indexOf("elif") != -1) || 
-                pars.indexOf("for") != -1 || pars.indexOf("while") != -1) {
-            i++;
+          if(((pars.contains("else") || pars.contains("elif")) || pars.contains("for")) || pars.contains("while")) {
+              i++;
+          } else {
           }
         }
-        if(pars.indexOf("for ") != -1 || pars.indexOf("while") != -1 || pars.indexOf("if ") != -1 
-            && pars.indexOf("elif") == -1) {
+        if(pars.contains("for ") || pars.contains("while") || pars.contains("if ") 
+            && !pars.contains("elif")) {
           tab_count++;
-        } else if(pars.indexOf("#End") != -1) {
+        } else if(pars.contains("#End")) {
           tab_count--;
         }
-        if(pars.indexOf("#End\n") == -1) {
+        if(!pars.contains("#End\n")) {
           prog.write(pars+"\n");
         }
       }
