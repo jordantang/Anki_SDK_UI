@@ -1,3 +1,5 @@
+//package layout;
+
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,33 +9,38 @@ import java.io.*;
 //Constructor for UI window
 
 public class sdk_ui extends JFrame implements ActionListener {
-  int num_functions = 7;
-  int num_statements = 3;
+  int num_buttons = 7;
   private JPanel ui_panel = new JPanel();
-  private JButton[] function_buttons = new JButton[num_functions];
-  private JButton[] statement_buttons = new JButton[num_statements];
-  private JTextArea codeTxt = new JTextArea(35, 50);
+  private JFrame ui_frame = new JFrame();
+  private JButton[] function_buttons = new JButton[num_buttons];
+  private JTextArea codeTxt = new JTextArea(25, 50);
+  private JLabel functions, statements;
   private JScrollPane codeScrollPane = new JScrollPane(codeTxt);
-  private JLabel functions = new JLabel("Functions");
-  private JLabel statements = new JLabel("Statements");
   private Vector textFieldVector = new Vector();
   private File temp_name = new File("temp_file.txt");
   private File file_name = new File("Your_textfile.py");
 
   sdk_ui() {
     super("SDK Interface"); 
-    setBounds(500,500,1500,1500);
+    setBounds(0,0,1000,1000);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Container con = this.getContentPane(); // inherit main frame
-    con.add(ui_panel); // add the panel to frame
+    con.add(ui_frame); // add the panel to frame
 
     textFieldVector.add(codeTxt);
     con.add(codeTxt, BorderLayout.PAGE_END);
     con.revalidate();
     con.repaint();
+    CardLayoutTest cd = new CardLayoutTest();
+    cd.addComponentToPane(ui_frame.getContentPane());
+    ui_frame.pack();
+    ui_frame.setVisible(true);
     //ui_panel.add(codeTxt);
-    
-    for(int i = 0; i < num_functions; i++) {
+    /*functions = new JLabel("Functions");
+    functions.setLocation(0, 50);
+    statements = new JLabel("Statements");
+    statements.setLocation(0, 50);
+    for(int i = 0; i < num_buttons; i++) {
       switch (i) {
         case 0: function_buttons[i] = new JButton("Scan cars");
                 break;
@@ -50,29 +57,13 @@ public class sdk_ui extends JFrame implements ActionListener {
         case 6: function_buttons[i] = new JButton("Done");
                 break;
       } 
-      //function_buttons[i].setLocation(50*i,0);
-      //function_buttons[i].setSize(100, 30);
+      function_buttons[i].setLocation(50*i,50);
+      function_buttons[i].setSize(100, 30);
       function_buttons[i].addActionListener(this);
       ui_panel.add(function_buttons[i]);
-
+      ui_panel.add(functions);
+      ui_panel.add(statements);
     }
-   /*for(int i = 0; i < num_statements; i++) {
-
-      switch (i) {
-        case 0: statement_buttons[i] = new JButton("for");
-                break;
-        case 1: statement_buttons[i] = new JButton("while");
-                break;
-        case 2: statement_buttons[i] = new JButton("else");
-                break;
-        case 3: statement_buttons[i] = new JButton("close");
-                break;
-      }
-      //statement_buttons[i].setLocation(50*i, 20);
-      //statement_buttons[i].setSize(100,30);
-      statement_buttons[i].addActionListener(this);
-      ui_panel.add(function_buttons[i]);
-    }*/
 
     codeTxt.setFont(new Font("Times New Roman", Font.BOLD, 12));
     codeTxt.setLineWrap(true);
@@ -80,7 +71,60 @@ public class sdk_ui extends JFrame implements ActionListener {
     codeScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     codeScrollPane.setPreferredSize(new Dimension(250, 250));
     
-    setVisible(true); // display this frame
+    setVisible(true);*/
+  } 
+
+  class CardLayoutTest implements ItemListener {
+    JPanel cards;
+    final static String BUTTONPANEL = "Card with JButtons";
+    final static String LABELPANEL = "Card with JLabels";
+    int num_buttons = 7;
+    JButton function_buttons[] = new JButton[num_buttons];
+
+    public void addComponentToPane(Container pane) {
+      JPanel comboBoxPane = new JPanel();
+      String comboBoxItems[] = { BUTTONPANEL, LABELPANEL };
+      JComboBox cb = new JComboBox(comboBoxItems);
+      cb.setEditable(false);
+      cb.addItemListener(this);
+      comboBoxPane.add(cb);
+      
+      JPanel card1 = new JPanel();
+      for(int i = 0; i < num_buttons; i++) {
+        switch (i) {
+          case 0: function_buttons[i] = new JButton("Scan cars");
+                  break;
+          case 1: function_buttons[i] = new JButton("Connect car");
+                  break;
+          case 2: function_buttons[i] = new JButton("Set lights");
+                  break;
+          case 3: function_buttons[i] = new JButton("Set speed");
+                  break;
+          case 4: function_buttons[i] = new JButton("Change lane");
+                  break;
+          case 5: function_buttons[i] = new JButton("Disconnect car");
+                  break;
+          case 6: function_buttons[i] = new JButton("Done");
+                  break;
+        }
+        card1.add(function_buttons[i]);
+      }
+
+      JPanel card2 = new JPanel();
+      card2.add(new JLabel("Functions"));
+      
+      cards = new JPanel(new CardLayout());
+      cards.add(card1, BUTTONPANEL);
+      cards.add(card2, LABELPANEL);
+
+      pane.add(comboBoxPane, BorderLayout.PAGE_START);
+      pane.add(cards, BorderLayout.CENTER);
+    }
+
+    public void itemStateChanged(ItemEvent evt) {
+      CardLayout c1 = (CardLayout)(cards.getLayout());
+      c1.show(cards, (String)evt.getItem());
+    }
   }
 
   public void actionPerformed(ActionEvent e) {
@@ -110,14 +154,14 @@ public class sdk_ui extends JFrame implements ActionListener {
     } 
     else if(e.getSource() == function_buttons[5]) {
       textInsert(function_buttons[5].getText());
-      for(int i = 0; i < num_functions; i++) {
+      for(int i = 0; i < num_buttons; i++) {
         function_buttons[i].setEnabled(true);
       }
     }
     else {
       write_file();
       parse_tabs();
-      for(int i = 0; i < num_functions; i++) {
+      for(int i = 0; i < num_buttons; i++) {
         if(!function_buttons[i].isEnabled()) {
           function_buttons[i].setEnabled(true);
         }
@@ -157,7 +201,9 @@ public class sdk_ui extends JFrame implements ActionListener {
     
   } 
 
+
   public static void main(String args[]) {
     new sdk_ui();
   }
+
 }
