@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.127+C:\Users\Jordan\Documents\Projects\Anki_SDK_UI\.metadata\.plugins\org.eclipse.jdt.core
 2943934462.index
 735681076.index
@@ -20,3 +21,6 @@ INDEX VERSION 1.127+C:\Users\Jordan\Documents\Projects\Anki_SDK_UI\.metadata\.pl
 182735413.index
 648820999.index
 2010491873.index
+=======
+INDEX VERSION 1.127+/Users/jordantang/Documents/UI/.metadata/.plugins/org.eclipse.jdt.core
+>>>>>>> origin/master
