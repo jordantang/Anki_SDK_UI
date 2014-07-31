@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Anki DRIVE SDK</title>
+    <link rel="stylesheet" type="text/css" href="sdk.css">
+    <link href='http://fonts.googleapis.com/css?family=Jockey+One' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".difficultybutton").click(function () {
+                $(".difficultysettings").toggle();
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#basicspeedbutton").click(function () {
+                $("#basicspeedform").slideToggle();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#basiclightsbutton").click(function () {
+                $("#basiclightsform").slideToggle();
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#basicwaitbutton").click(function () {
+                $("#basicwaitform").slideToggle();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#basiclanebutton").click(function () {
+                $("#basiclaneform").slideToggle();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#advspeedbutton").click(function () {
+                $("#advspeedform").slideToggle();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#advlightsbutton").click(function () {
+                $("#advlightsform").slideToggle();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#advlanebutton").click(function () {
+                $("#advlaneform").slideToggle();
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#advwaitbutton").click(function () {
+                $("#advwaitform").slideToggle();
+            });
+        });
+    </script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("li.basicdifficulty").click(function () {
+                $(".basicgroup").show(400);
+                $(".advancedgroup").hide();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("li.advanceddifficulty").click(function () {
+                $(".advancedgroup").show(400);
+                $(".basicgroup").hide();
+            });
+        });
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('.tags_select a').click(function () {
+                var value = $(this).text();
+                var input = $('.prntscreenstyle');
+                input.val(input.val() + value + ', ');
+                return false;
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".on-for").click(function () {
+                $(".duration-group").show();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var lightstatus = $('select.lightstatus-dropwdown').val(); //no :selected here
+
+            $('select.lightstatus-dropdown').change(function () {
+                lightstatus = $(this).val();
+                if (lightstatus == "on_for") {
+                    $('.duration-group').show();
+                } else {
+                    $('.duration-group').hide();
+                }
+            });
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <a href="#">
+            <div class="sprite runbutton"></div>
+        </a>
+        <a href="#">
+            <div class="sprite clearallbutton"></div>
+        </a>
+
+        <h1 class="connected-cars">CONNECTED CARS</h1>
+
+        <div class="side-nav-wrap">
+            <img src="jpg/sdk_logo.png" class="logo">
+
+            <a href="#">
+                <div class="sprite backbutton"></div>
+            </a>
+
+
+            <a href="#">
+                <p class="difficultybutton"><span class="buttontext">Mode</span>
+                </p>
+            </a>
+            <ul class="difficulty">
+                <li></li>
+                <div class="difficultysettings">
+                    <a href="#">
+                        <li class="basicdifficulty">BASIC</li>
+                    </a>
+                    <a href="#">
+                        <li class="advanceddifficulty">ADVANCED</li>
+                    </a>
+                </div>
+            </ul>
+
+
+
+
+
+            <!--PLACE FIRST SET OF BASIC BUTTONS IN A DIV. THESE WILL HAVE SEPERATE HREF LINKS THAT HAVE 'WAIT' TIMES BAKED INTO THE PYTHON-->
+            <div class="basicgroup">
+                <a href="#speed">
+                    <div class="sprite" id="basicspeedbutton"></div>
+                </a>
+                <form class="form" id="basicspeedform" action="javascript:addCode();">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown" action="">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-accel">Accel.</span>
+                    <br>
+                    <input type="text" id="speedField" class="input-field" style="width:60px;" placeholder="1-2000">
+
+                    <input type="text" class="input-field" style="width:60px; margin-left:10px;" placeholder="1-2000">
+
+                    <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+
+                </form>
+
+
+
+
+                <a href="#lights">
+                    <div class="sprite" id="basiclightsbutton"></div>
+                </a>
+                <form class="form" id="basiclightsform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
+                    <br>
+                    <select style="width:70px;" class="location-dropdown">
+                        <option value="Front">Front</option>
+                        <option value="Top">Top</option>
+                        <option value="Tail">Tail</option>
+                    </select>
+
+
+                    <select style="width:70px;" class="type-dropdown">
+                        <option value="Steady">Steady</option>
+                        <option value="Flash">Flash</option>
+                        <option value="Pulse">Pulse</option>
+                    </select>
+
+                    <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
+                    <br>
+                    <input type="text" class="input-field" style="width:60px;" placeholder="1-59 sec.">
+                    <select style="width:70px;" class="lightstatus-dropdown">
+                        <option class="on" value="always_on">Always On</option>
+                        <option class="off" value="off" selected="selected">Off</option>
+                        <option class="on-for" value="on_for">On for:</option>
+                    </select>
+                    <br>
+                    <div class="duration-group">
+                        <span class="dropdown-Duration">Light Duration</span>
+                        <br>
+                        <input type="text" class="input-field" style="width:145px;" placeholder="Time light stays on for">
+
+                    </div>
+
+
+                    <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+
+                </form>
+
+
+                <a href="#lane">
+                    <div class="sprite" id="basiclanebutton"></div>
+                </a>
+                <form class="form" id="basiclaneform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-lane">Lane</span>
+                    <br>
+                    <input type="text" class="input-field" style="width:60px;" placeholder="1-2000">
+
+                    <input type="text" class="input-field" style="width:60px; margin-left:10px;" placeholder="-10 - +10">
+
+                    <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#wait">
+                    <div id="basicwaitbutton"></div>
+                    </a>
+                    <form class="form" id="basicwaitform" action="something.asp">
+                        <span class="dropdown-cars">Cars</span>
+                        <br>
+                        <select style="width:130px;" class="cars-dropdown">
+                            <option value="PHP">Car_001</option>
+                            <option value="PHP">Car_002</option>
+                            <option value="PHP">Car_003</option>
+                        </select>
+                        <br>
+
+                        <span class="dropdown-wait">Wait Time</span>
+                        <br>
+                        <input type="text" class="input-field" style="width:140px;" placeholder="Time in Seconds">
+                        
+                        <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+                    </form>
+                
+            </div>
+
+
+
+            <!--PLACE ALL THE ADVANCED BUTTONS IN HERE, INCLUDING THE BASIC SET AGAIN. THIS BASIC SET WILL BE LINKED TO MORE COMPLICATED PYTHON-->
+            <div class="advancedgroup">
+                <a href="#">
+                    <div class="sprite" id="advspeedbutton"></div>
+                </a>
+                <form class="form" id="advspeedform" action="addCode()">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-accel">Accel.</span>
+                    <br>
+                    <input type="text" class="input-field" style="width:60px;" placeholder="1-2000">
+
+                    <input type="text" class="input-field" style="width:60px; margin-left:10px;" placeholder="1-2000">
+
+                    <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#">
+                    <div class="sprite" id="advlightsbutton"></div>
+                </a>
+                <form class="form" id="advlightsform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
+                    <br>
+                    <select style="width:70px;" class="location-dropdown">
+                        <option value="Front">Front</option>
+                        <option value="Top">Top</option>
+                        <option value="Tail">Tail</option>
+                    </select>
+
+
+                    <select style="width:70px;" class="type-dropdown">
+                        <option value="Steady">Steady</option>
+                        <option value="Flash">Flash</option>
+                        <option value="Pulse">Pulse</option>
+                    </select>
+
+                    <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
+                    <br>
+                    <input type="text" class="input-field" style="width:60px;" placeholder="1-59 sec.">
+                    <select style="width:70px;" class="lightstatus-dropdown">
+                        <option class="on" value="always_on">Always On</option>
+                        <option class="off" value="off" selected="selected">Off</option>
+                        <option class="on-for" value="on_for">On for:</option>
+                    </select>
+                    <br>
+                    <div class="duration-group">
+                        <span class="dropdown-Duration">Light Duration</span>
+                        <br>
+                        <input type="text" class="input-field" style="width:145px;" placeholder="Time light stays on for">
+
+                    </div>
+
+
+                    <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#">
+                    <div class="sprite" id="advlanebutton"></div>
+                </a>
+                <form class="form" id="advlaneform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-lane">Lane</span>
+                    <br>
+                    <input type="text" class="input-field" style="width:60px;" placeholder="1-2000">
+
+                    <input type="text" class="input-field" style="width:60px; margin-left:10px;" placeholder="-10 - +10">
+
+                    <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+
+                </form>
+                
+                <a href="#wait">
+                    <div id="advwaitbutton"></div>
+                    </a>
+                    <form class="form" id="advwaitform" action="something.asp">
+                        <span class="dropdown-cars">Cars</span>
+                        <br>
+                        <select style="width:130px;" class="cars-dropdown">
+                            <option value="PHP">Car_001</option>
+                            <option value="PHP">Car_002</option>
+                            <option value="PHP">Car_003</option>
+                        </select>
+                        <br>
+
+                        <span class="dropdown-wait">Wait Time</span>
+                        <br>
+                        <input type="text" class="input-field" style="width:140px;" placeholder="Time in Seconds">
+                        
+                        <div class="form-buttons">
+                        <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
+                        <input type="image" src="jpg/addCode-image.png" alt="Submit Form">
+                    </div>
+                    </form>
+
+                <a href="#">
+                    <div class="sprite" id="ifbutton"></div>
+                </a>
+
+                <a href="#">
+                    <div class="sprite" id="loopbutton"></div>
+                </a>
+
+                <a href="#">
+                    <div class="sprite" id="functionbutton"></div>
+                </a>
+            </div>
+        </div>
+
+
+        <!--THIS IS WHERE THE TEXT BOX SITS. IT IS DISABLED AT THE MOMENT,BUT BY REMOVING THAT TAG YOU CAN TYPE INTO IT-->
+
+
+        <div class="prntscreenstyle">
+            <div id="columns">
+  <div class="column" draggable="true" id = 'AddSpeed' data-car='myCar' data-speed='55' data-accel='10' data-full><header>SET SPEED</header>    
+      <body>
+      <div id="myResults"></div>
+      <script type="text/javascript">
+        var speed = document.getElementById('AddSpeed');
+        var text = "";
+        // Legacy browser support
+        text += speed.dataset.car + " ";
+        text += speed.dataset.speed + " ";
+        text += speed.dataset.accel + " ";
+        document.getElementById('myResults').innerHTML = text;
+        speed.dataset.full = text;
+      </script>
+    </body>
+    </div>
+        <div class="column" draggable="true" id = 'SetLane' data-car='myCar' data-speed='55' data-lane='10'><header>SET LANE</header>
+        <body>
+        <div id="myResults"></div>
+        <script type="text/javascript">
+            // Legacy browser support
+            var speed = document.getElementById('AddSpeed');
+            var text = "";
+            text += speed.dataset.full;
+            document.getElementById('myResults').innerHTML = text;
+            </script>
+        </body>
+            </div>
+                <div class="column" draggable="true" id = 'SetLights' data-car='myCar'><header>SET LIGHTS</header></div>
+                <div class="column" draggable="true" id = 'Something'><header>WAIT</header></div>
+            </div>
+
+
+        </div>
+
+        <!--THIS IS WHERE THE TEXT SITS NOW. ADD ' display: none; ' to the "tags_select" class to hide it -->
+        <div class="tags_select">s
+            <a href="#">click this to add text to the box</a>
+            <br>
+            <a href="#">this is how we will add the dummy code</a>
+            <br>
+            <a href="#">for kids to follow along</a>
+            <br>
+            <a href="#">I ran out of time, sorry.</a>
+            <br>
+            <a href="#">read the code comments</a>
+            <a href="#">to hide this</a>
+            <a href="#">.....SCIENCE!</a>
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+
+<style>
+.column {
+  height: 50px;
+  width: 400px;
+  border: 2px solid #FFF;
+  background-color: #FFF;
+  margin-right: 5px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+  margin-left: 5px;
+  margin-top: 5px;
+    
+}
+.column header {
+  color: #FFF;
+  text-shadow: #FF0000 0 1px;
+  box-shadow: 5px;
+  padding: 5px;
+  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -webkit-gradient(linear, left top, right top,
+                               color-stop(0, rgb(0,0,0)),
+                               color-stop(0.50, rgb(79,79,79)),
+                               color-stop(1, rgb(21,21,21)));
+  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  border-bottom: 1px solid #ddd;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -ms-border-radius-topleft: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -ms-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+  font-family: drive;
+    
+}
+</style>
+<script>
+    var add = 0;
+    function addCode() {
+        alert(speedField.value)
+        $("#AddSpeed").show();
+    }
+    </script>
+
+<!--
+<script type = "text/javascript">
+    var add = 0;
+    function addCode() {
+        var elements = document.getElementsByClassName("column");
+        elements[add].style.display = "block";
+    }
+</script>
+-->
+<input type = "button" onclick="switchVis()" value = "Invisible"/>
+<script type = "text/javascript">
+  var on = 1;
+  function switchVis() {
+    var elements = document.getElementsByClassName("column");
+    if(on == 1) {
+      for(var i = 0; i < elements.length; i++){
+        elements[i].style.display = "none";
+      }
+      //elements[0].style.display = "none";
+      on = 0;
+    } else {
+      for(var i = 0; i < elements.length; i++){
+        elements[i].style.display = "block";
+      }
+      //elements[0].style.display = "block";
+      on = 1;
+    }
+
+  }
+</script>
+
+<script>
+
+function handleDragStart(e) {
+  this.style.opacity = '1';  // this / e.target is the source node.
+}
+
+var cols = document.querySelectorAll('#columns .column');
+[].forEach.call(cols, function(col) {
+  col.addEventListener('dragstart', handleDragStart, false);
+  col.addEventListener('contextmenu', function(ev) {
+    ev.preventDefault();
+    alert('success!');
+    return false;
+}, false);
+});
+  <p><input type = "button" id = "button" value = "Data"></p>
+</script>
+<style>
+.column.over {
+  border: 2px dashed #FF0000;
+}
+</style>
+<script>
+function handleDragStart(e) {
+  this.style.opacity = '1';  // this / e.target is the source node.
+}
+
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault(); // Necessary. Allows us to drop.
+  }
+
+  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragEnter(e) {
+  // this / e.target is the current hover target.
+  this.classList.add('over');
+}
+
+function handleDragLeave(e) {
+  this.classList.remove('over');  // this / e.target is previous target element.
+}
+
+var cols = document.querySelectorAll('#columns .column');
+[].forEach.call(cols, function(col) {
+  col.addEventListener('dragstart', handleDragStart, false);
+  col.addEventListener('dragenter', handleDragEnter, false);
+  col.addEventListener('dragover', handleDragOver, false);
+  col.addEventListener('dragleave', handleDragLeave, false);
+});
+    
+function handleDrop(e) {
+  // this / e.target is current target element.
+
+  if (e.stopPropagation) {
+    e.stopPropagation(); // stops the browser from redirecting.
+  }
+
+  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragEnd(e) {
+  // this/e.target is the source node.
+
+  [].forEach.call(cols, function (col) {
+    col.classList.remove('over');
+  });
+}
+
+var cols = document.querySelectorAll('#columns .column');
+[].forEach.call(cols, function(col) {
+  col.addEventListener('dragstart', handleDragStart, false);
+  col.addEventListener('dragenter', handleDragEnter, false)
+  col.addEventListener('dragover', handleDragOver, false);
+  col.addEventListener('dragleave', handleDragLeave, false);
+  col.addEventListener('drop', handleDrop, false);
+  col.addEventListener('dragend', handleDragEnd, false);
+});
+    
+var dragSrcEl = null;
+
+function handleDragStart(e) {
+  // Target (this) element is the source node.
+  this.style.opacity = '1';
+
+  dragSrcEl = this;
+
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.innerHTML);
+}
+
+function handleDrop(e) {
+  // this/e.target is current target element.
+
+  if (e.stopPropagation) {
+    e.stopPropagation(); // Stops some browsers from redirecting.
+  }
+
+  // Don't do anything if dropping the same column we're dragging.
+  if (dragSrcEl != this) {
+    // Set the source column's HTML to the HTML of the column we dropped on.
+    dragSrcEl.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+    var x = e.dataTransfer.getData('text/html');
+  }
+  
+  return false;
+}
+</script>
+
+</html>
