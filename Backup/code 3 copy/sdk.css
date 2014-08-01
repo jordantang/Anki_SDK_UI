@@ -38,23 +38,11 @@ h1{
     color: #e2231a;
 }
 
-#top, #bottom, #left, #right {
-	background: #e2231a;
-	position: fixed;
-	}
-	#left, #right {
-		top: 0; bottom: 0;
-		width: 8px;
-		}
-		#left { left: 0; }
-		#right { right: 0; }
-		
-	#top, #bottom {
-		left: 0; right: 0;
-		height: 8px;
-		}
-		#top { top: 0; }
-		#bottom { bottom: 0; }
+.connected-cars{
+    position: fixed;
+    margin-left: 50%;   
+    margin-top: 28px;
+}
 
 .sprite {
 	background: url('jpg/sdk_btn-sprite.png') no-repeat;
@@ -116,7 +104,7 @@ h1{
     position: fixed;
 }
 .backbutton {
-    background-position:  -3px -136px;
+    background-position:  -7px -140px;
 	width: 94px;
 	height: 38px;
     margin-left: 20px;
@@ -174,7 +162,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
     z-index: 99;
     position: relative;
 }
@@ -184,7 +172,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #basiclightsbutton {
@@ -192,7 +180,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
     z-index: 99;
     position: relative;
 }
@@ -202,7 +190,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
     position: relative;
     z-index: 99;
 }
@@ -214,7 +202,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #advlanebutton:hover {
@@ -222,7 +210,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #basiclanebutton {
@@ -230,7 +218,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
     z-index: 99;
     position: relative;
 }
@@ -240,7 +228,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
     z-index: 99;
     position: relative;
 }
@@ -250,7 +238,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #ifbutton:hover {
@@ -258,7 +246,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #loopbutton {
@@ -266,7 +254,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #loopbutton:hover {
@@ -274,7 +262,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #functionbutton {
@@ -282,7 +270,7 @@ h1{
 	width: 174px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 #functionbutton:hover {
@@ -290,7 +278,7 @@ h1{
 	width: 190px;
 	height: 60px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 .difficulty {
@@ -543,168 +531,6 @@ box-shadow:         inset 0px 14px 27px 0px rgba(0, 0, 0, 1);
     border-width: 2px;
 }
 
-
-
-#basicwaitbutton {
-    background: url(jpg/waitbutton.png);
-    height: 54px;
-    width: 181px;
-    margin: auto;
-    margin-top: 25px;
-    z-index: 99;
-    position: relative;
-}
-
-#basicwaitbutton:hover {
-    background: url(jpg/waitbuttonhover.png);
-    height: 54px;
-    width: 181px;
-    margin: auto;
-    margin-top: 25px;
-    z-index: 99;
-    position: relative;
-}
-
-#advwaitbutton {
-    background: url(jpg/waitbutton.png);
-    height: 54px;
-    width: 181px;
-    margin: auto;
-    margin-top: 25px;
-    z-index: 99;
-    position: relative;
-}
-
-#advwaitbutton:hover {
-    background: url(jpg/waitbuttonhover.png);
-    height: 54px;
-    width: 181px;
-    margin: auto;
-    margin-top: 25px;
-    z-index: 99;
-    position: relative;
-}
-.dropdown-wait {
-     font-size: 12px;
-}
-
-#basicwaitform {
-    margin-left: 30px;
-}
-
-#advwaitform {
-     margin-left: 30px;
-}
-
-.welcome-page {
-    background: url(jpg/bg-tile.png);
-}
-
-h2 {
-    font-family: drive;
-    color: #d7d7d7;
-    font-size: 60px;
-    width: 889px;
-    margin: auto;
-}
-
-#splashtext {
-    font-family: arial, ;
-    font-size: 14px;
-    width: 70%;
-    margin: auto;
-    margin-top: 50px;
-}
-
-#splashstart {
-    font-family: arial, ;
-    font-size: 14px;
-    width: 70%;
-    margin: auto;
-    margin-top: 50px;
-}
-
-#scanbutton {
-    background-position:-456px -408px;
-	width: 141px;
-	height: 47px;
-    margin: auto;
-    margin-top: 30px;
-    
-}
-
-#scanbutton:hover {
-    background-position:-456px -501px;
-	width: 141px;
-	height: 47px;
-    margin: auto;
-    margin-top: 30px;
-    
-}
-
-.wrap {
-    border-style: solid;
-    border-width: 8px;
-    border-color: red;
-    height: 100%;
-    width: 
-    margin: 0px;
-    padding: 0px;
-}
-
-.found-cars-text {
-    font-family: arial, sans-serif;
-    font-size: 20px;
-    color: #FFF;
-    margin-left: 20px;
-    margin-top: 0px;
-}
-
-.addcar {
-    font-size: 20px;
-    font-family: drive;
-    color: #e2231a;
-}
-
-.connected-cars-style {
-    color: #FFF;
-    font-family: drive, sans-serif;
-    margin: auto;
-    width: 112px;
-    margin-left: 40px;
-    text-align: center;
-}
-
-#cars-group {
-    position: fixed;
-    width: 500px;
-    margin-left: 40%;
-    margin-top: 28px;
-}
-
-.connected-cars {
-    text-align: center;
-}
-
-
-.resetbutton {
-    background: url(jpg/clear-image.png) no-repeat; 
-    background-position: -2px 0;
-	width: 74px;
-	height: 30px;
-    border: none;
-    margin-bottom: 5px;
-    
-}
-
-.duration-groupadv {
-    display: none;
-}
-
-.lightstatus-dropdownadv {
-     margin-left: 15px;
-}
-
 .column {
   height: 50px;
   width: 400px;
@@ -749,6 +575,53 @@ h2 {
     
 }
 
-ul {
-    list-style-type:none;   
+#basicwaitbutton {
+    background: url(jpg/waitbutton.png);
+    height: 54px;
+    width: 181px;
+    margin: auto;
+    margin-top: 45px;
+    z-index: 99;
+    position: relative;
+}
+
+#basicwaitbutton:hover {
+    background: url(jpg/waitbuttonhover.png);
+    height: 54px;
+    width: 181px;
+    margin: auto;
+    margin-top: 45px;
+    z-index: 99;
+    position: relative;
+}
+
+#advwaitbutton {
+    background: url(jpg/waitbutton.png);
+    height: 54px;
+    width: 181px;
+    margin: auto;
+    margin-top: 45px;
+    z-index: 99;
+    position: relative;
+}
+
+#advwaitbutton:hover {
+    background: url(jpg/waitbuttonhover.png);
+    height: 54px;
+    width: 181px;
+    margin: auto;
+    margin-top: 45px;
+    z-index: 99;
+    position: relative;
+}
+.dropdown-wait {
+     font-size: 12px;
+}
+
+#basicwaitform {
+    margin-left: 30px;
+}
+
+#advwaitform {
+     margin-left: 30px;
 }
