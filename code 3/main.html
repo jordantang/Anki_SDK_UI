@@ -189,7 +189,7 @@
                 <form class="form" id="basicspeedform" action="javascript:addCode();">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown" action="">
+                    <select style="width:130px;" id="speedCar" class="cars-dropdown" action="">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -199,7 +199,7 @@
                     <br>
                     <input type="text" id="speedField" class="input-field" style="width:60px;" placeholder="1-2000">
 
-                    <input type="text" class="input-field" style="width:60px; margin-left:10px;" placeholder="1-2000">
+                    <input type="text" id="accelField" class="input-field" style="width:60px; margin-left:10px;" placeholder="1-2000">
 
                     <div class="form-buttons">
                         <input type="image" src="jpg/clear-image.png" onclick="RESET FIELD JAVASCRIPT HERE">
@@ -217,7 +217,7 @@
                 <form class="form" id="basiclightsform" action="something.asp">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" id="lightCar" class="cars-dropdown">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -225,14 +225,14 @@
 
                     <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
                     <br>
-                    <select style="width:70px;" class="location-dropdown">
+                    <select style="width:70px;" id="locLights" class="location-dropdown">
                         <option value="Front">Front</option>
                         <option value="Top">Top</option>
                         <option value="Tail">Tail</option>
                     </select>
 
 
-                    <select style="width:70px;" class="type-dropdown">
+                    <select style="width:70px;" id="typeLights" class="type-dropdown">
                         <option value="Steady">Steady</option>
                         <option value="Flash">Flash</option>
                         <option value="Pulse">Pulse</option>
@@ -240,7 +240,7 @@
 
                     <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
                     <br>
-                    <input type="text" class="input-field" style="width:60px;" placeholder="1-59 sec.">
+                    <input type="text" id="startTime" class="input-field" style="width:60px;" placeholder="1-59 sec.">
                     <select style="width:70px;" class="lightstatus-dropdown">
                         <option class="on" value="always_on">Always On</option>
                         <option class="off" value="off" selected="selected">Off</option>
@@ -250,7 +250,7 @@
                     <div class="duration-group">
                         <span class="dropdown-Duration">Light Duration</span>
                         <br>
-                        <input type="text" class="input-field" style="width:145px;" placeholder="Time light stays on for">
+                        <input type="text" id="durLights" class="input-field" style="width:145px;" placeholder="Time light stays on for">
 
                     </div>
 
@@ -517,52 +517,7 @@
 
 
 </body>
-
-<style>
-.column {
-  height: 50px;
-  width: 400px;
-  border: 2px solid #FFF;
-  background-color: #FFF;
-  margin-right: 5px;
-  -webkit-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 3px #000;
-  -ms-box-shadow: inset 0 0 3px #000;
-  box-shadow: inset 0 0 3px #000;
-  text-align: center;
-  cursor: move;
-  margin-left: 5px;
-  margin-top: 5px;
     
-}
-.column header {
-  color: #FFF;
-  text-shadow: #FF0000 0 1px;
-  box-shadow: 5px;
-  padding: 5px;
-  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  background: -webkit-gradient(linear, left top, right top,
-                               color-stop(0, rgb(0,0,0)),
-                               color-stop(0.50, rgb(79,79,79)),
-                               color-stop(1, rgb(21,21,21)));
-  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  border-bottom: 1px solid #ddd;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  -ms-border-radius-topleft: 10px;
-  border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -ms-border-top-right-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  border-top-right-radius: 10px;
-  font-family: drive;
-    
-}
-</style>
 <script>
     var add = 0;
     function addCode() {
@@ -580,7 +535,7 @@
     }
 </script>
 -->
-<input type = "button" onclick="switchVis()" value = "Invisible"/>
+<input type = "button" onclick="switchVis()" value = "Mrs. Fantastic"/>
 <script type = "text/javascript">
   var on = 1;
   function switchVis() {
