@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Anki DRIVE SDK</title>
+    <link rel="stylesheet" type="text/css" href="sdk.css">
+    <link href='http://fonts.googleapis.com/css?family=Jockey+One' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="scripts.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <a href="#">
+            <div class="sprite runbutton"></div>
+        </a>
+        <a href="#">
+            <div class="sprite clearallbutton"></div>
+        </a>
+
+        <div id="cars-group">
+            <h1 class="connected-cars">CONNECTED CARS</h1>
+            <span class="connected-cars-style">CAR_001</span> 
+            <!--THESE NEED TO BE VARIABLES-->
+            <span class="connected-cars-style">CAR_002</span>
+            <span class="connected-cars-style">CAR_003</span>
+        </div>
+
+
+
+        <div class="side-nav-wrap">
+            <img src="jpg/sdk_logo.png" class="logo">
+
+            <a href="found-cars.html">
+                <div class="sprite backbutton"></div>
+            </a>
+
+
+            <a href="#">
+                <p class="difficultybutton"><span class="buttontext">Mode</span>
+                </p>
+            </a>
+            <ul class="difficulty">
+                <li></li>
+                <div class="difficultysettings">
+                    <a href="#">
+                        <li class="basicdifficulty">BASIC</li>
+                    </a>
+                    <a href="#">
+                        <li class="advanceddifficulty">ADVANCED</li>
+                    </a>
+                </div>
+            </ul>
+
+
+
+
+
+            <!--PLACE FIRST SET OF BASIC BUTTONS IN A DIV. THESE WILL HAVE SEPERATE HREF LINKS THAT HAVE 'WAIT' TIMES BAKED INTO THE PYTHON-->
+            <div class="basicgroup">
+                <a href="#speed">
+                    <div class="sprite" id="basicspeedbutton"></div>
+                </a>
+                <form class="form" id="basicspeedform" action="javascript:addCode('speed')">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" id="speedCar" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-accel">Accel.</span>
+                    <br>
+                    <input type="number" id="speedField" class="input-field" style="width:60px;" placeholder="0-200"  min="0" max="200" step="any" maxlength="4" required>
+
+                    <input type="number" id="accelField" class="input-field" style="width:60px; margin-left:10px;" placeholder="1-250" maxlength="4"  min="1" max="250" step="any" required>
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+
+                </form>
+
+
+
+
+                <a href="#lights">
+                    <div class="sprite" id="basiclightsbutton"></div>
+                </a>
+                <form class="form" id="basiclightsform" action="javascript:addCode('lights')">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
+                    <br>
+                    <select style="width:70px;" class="location-dropdown">
+                        <option value="Front">Front</option>
+                        <option value="Top">Top</option>
+                        <option value="Tail">Tail</option>
+                    </select>
+
+
+                    <select style="width:70px;" class="type-dropdown">
+                        <option value="Steady">Steady</option>
+                        <option value="Flash">Flash</option>
+                        <option value="Pulse">Pulse</option>
+                    </select>
+
+                    <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:60px;" placeholder="1-59 sec." maxlength="2" min="1" max="59" step="1" required>
+                    <select style="width:70px;" class="lightstatus-dropdown">
+                        <option class="on" value="always_on">Always On</option>
+                        <option class="off" value="off" selected="selected">Off</option>
+                        <option class="on-for" value="on_for">On for:</option>
+                    </select>
+                    <br>
+                    <div class="duration-group">
+                        <span class="dropdown-Duration">Light Duration</span>
+                        <br>
+                        <input type="number" class="input-field" style="width:145px;" placeholder="Time light stays on for" maxlength="3" min="1" max="999" step="1">
+
+                    </div>
+
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton" id="resetbuttonbasic">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+
+                </form>
+
+
+                <a href="#lane">
+                    <div class="sprite" id="basiclanebutton"></div>
+                </a>
+                <form class="form" id="basiclaneform" action="javascript:addCode('lane')">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-lane">Lane</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:60px;" placeholder="0-200"  min="0" max="200" step="any" maxlength="4" required>
+
+                    <input type="number" class="input-field" style="width:60px; margin-left:10px;" placeholder="+-10" maxlength="3" min="-10" max="10" step="1" required>
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#wait">
+                    <div id="basicwaitbutton"></div>
+                </a>
+                <form class="form" id="basicwaitform" action="javascript:addCode('wait')">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+                    <br>
+
+                    <span class="dropdown-wait">Wait Time</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:140px;" placeholder="Time in Seconds" maxlength="3" min="1" max="999" step="1" required>
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+                </form>
+
+            </div>
+
+
+
+            <!--PLACE ALL THE ADVANCED BUTTONS IN HERE, INCLUDING THE BASIC SET AGAIN. THIS BASIC SET WILL BE LINKED TO MORE COMPLICATED PYTHON-->
+            <div class="advancedgroup">
+                <a href="#">
+                    <div class="sprite" id="advspeedbutton"></div>
+                </a>
+                <form class="form" id="advspeedform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-accel">Accel.</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:60px;" placeholder="0-200"  min="0" max="200" step="any" maxlength="4" required>
+
+                    <input type="number" class="input-field" style="width:60px; margin-left:10px;" placeholder="1-250" maxlength="4"  min="1" max="250" step="any" required>
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#">
+                    <div class="sprite" id="advlightsbutton"></div>
+                </a>
+                <form class="form" id="advlightsform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
+                    <br>
+                    <select style="width:70px;" class="location-dropdown">
+                        <option value="Front">Front</option>
+                        <option value="Top">Top</option>
+                        <option value="Tail">Tail</option>
+                    </select>
+
+
+                    <select style="width:70px;" class="type-dropdown">
+                        <option value="Steady">Steady</option>
+                        <option value="Flash">Flash</option>
+                        <option value="Pulse">Pulse</option>
+                    </select>
+
+                    <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:60px;" placeholder="1-59 sec." maxlength="2" min="1" max="59" step="1" required>
+                    <select style="width:70px;" class="lightstatus-dropdownadv">
+                        <option class="on" value="always_on">Always On</option>
+                        <option class="off" value="off" selected="selected">Off</option>
+                        <option class="on-for" value="on_for">On for:</option>
+                    </select>
+                    <br>
+                    <div class="duration-groupadv">
+                        <span class="dropdown-Duration">Light Duration</span>
+                        <br>
+                        <input type="number" class="input-field" style="width:145px;" placeholder="Time light stays on for" maxlength="3" min="1" max="999" step="1" required>
+
+                    </div>
+
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton" id="resetbuttonadv">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#">
+                    <div class="sprite" id="advlanebutton"></div>
+                </a>
+                <form class="form" id="advlaneform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+
+                    <span class="dropdown-speed">Speed</span>  <span class="dropdown-lane">Lane</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:60px;" placeholder="0-200"  min="0" max="200" step="any" maxlength="4" required>
+
+                    <input type="number" class="input-field" style="width:60px; margin-left:10px;" placeholder="+-10" maxlength="3" min="-10" max="10" step="1" required>
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+
+                </form>
+
+                <a href="#wait">
+                    <div id="advwaitbutton"></div>
+                </a>
+                <form class="form" id="advwaitform" action="something.asp">
+                    <span class="dropdown-cars">Cars</span>
+                    <br>
+                    <select style="width:130px;" class="cars-dropdown">
+                        <option value="PHP">Car_001</option>
+                        <option value="PHP">Car_002</option>
+                        <option value="PHP">Car_003</option>
+                    </select>
+                    <br>
+
+                    <span class="dropdown-wait">Wait Time</span>
+                    <br>
+                    <input type="number" class="input-field" style="width:140px;" placeholder="Time in Seconds" maxlength="3" min="1" max="999" step="1" required>
+
+                    <div class="form-buttons">
+                        <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
+                        <input type="image" src="jpg/addCode-image.png" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" alt="Submit Form">
+                    </div>
+                </form>
+
+                <a href="#">
+                    <div class="sprite" id="ifbutton"></div>
+                </a>
+
+                <a href="#">
+                    <div class="sprite" id="loopbutton"></div>
+                </a>
+
+                <a href="#">
+                    <div class="sprite" id="functionbutton"></div>
+                </a>
+            </div>
+        </div>
+
+
+        <!--THIS IS WHERE THE TEXT BOX SITS.-->
+
+        <div class="prntscreenstyle">
+            <div id="columns">
+                <div class="column" draggable="true" id = 'AddSpeed' data-car data-speed data-accel data-full style="display:none;"><header>SET SPEED</header></div>
+                <div class="column" draggable="true" id = 'SetLane' data-car data-speed data-lane style="display:none;"><header>SET LANE</header></div>
+                <div class="column" draggable="true" id = 'SetLights' data-car style="display:none;"><header>SET LIGHTS</header></div></div>
+                <div class="column" draggable="true" id = 'Wait' style="display:none;"><header>WAIT</header></div></div>
+                <ul>
+                    <li>
+                    
+                    </li>
+                </ul>
+                <!--<div class="column" draggable="true" id = 'AddSpeed' data-car='myCar' data-speed='55' data-accel='10' data-full><header>SET SPEED</header>    
+                <body>
+                <div id="myResults"></div>
+                <script type="text/javascript">
+                    var speed = document.getElementById('AddSpeed');
+                    var text = "";
+                    // Legacy browser support
+                    text += speed.dataset.car + " ";
+                    text += speed.dataset.speed + " ";
+                    text += speed.dataset.accel + " ";
+                    document.getElementById('myResults').innerHTML = text;
+                    speed.dataset.full = text;
+                </script>
+                </body>
+                </div>
+                <div class="column" draggable="true" id = 'SetLane' data-car='myCar' data-speed='55' data-lane='10'><header>SET LANE</header>
+                <body>
+                <div id="myResults"></div>
+                <script type="text/javascript">
+                    // Legacy browser support
+                    var speed = document.getElementById('AddSpeed');
+                    var text = "";
+                    text += speed.dataset.full;
+                    document.getElementById('myResults').innerHTML = text;
+                </script>
+                </body>
+                </div>
+                <div class="column" draggable="true" id = 'SetLights' data-car='myCar'><header>SET LIGHTS</header></div>
+                <div class="column" draggable="true" id = 'Something'><header>WAIT</header></div>
+            </div>-->
+            </div>
+
+
+        </div>
+
+    <div>
+        
+        </div>
+
+</body>
+
+</html>
