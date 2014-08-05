@@ -64,7 +64,7 @@
                 <a href="#speed">
                     <div class="sprite" id="basicspeedbutton"></div>
                 </a>
-                <form class="form" id="basicspeedform" action="javascript:addCode('speed')">
+                <form class="form" id="basicspeedform" action="javascript:addCode('speed', 'bas')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
                     <select style="width:130px;" id="speedCar" class="cars-dropdown">
@@ -92,10 +92,10 @@
                 <a href="#lights">
                     <div class="sprite" id="basiclightsbutton"></div>
                 </a>
-                <form class="form" id="basiclightsform" action="javascript:addCode('lights')">
+                <form class="form" id="basiclightsform" action="javascript:addCode('lights', 'bas')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" id="lightCar" class="cars-dropdown">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -103,14 +103,14 @@
 
                     <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
                     <br>
-                    <select style="width:70px;" class="location-dropdown">
+                    <select style="width:70px;" id="location" class="location-dropdown">
                         <option value="Front">Front</option>
                         <option value="Top">Top</option>
                         <option value="Tail">Tail</option>
                     </select>
 
 
-                    <select style="width:70px;" class="type-dropdown">
+                    <select style="width:70px;" id = "type" class="type-dropdown">
                         <option value="Steady">Steady</option>
                         <option value="Flash">Flash</option>
                         <option value="Pulse">Pulse</option>
@@ -119,7 +119,7 @@
                     <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
                     <br>
                     <input type="number" class="input-field" style="width:60px;" placeholder="1-59 sec." maxlength="2" min="1" max="59" step="1" required>
-                    <select style="width:70px;" class="lightstatus-dropdown">
+                    <select style="width:70px;" class="lightstatus-dropdown" id = "status">
                         <option class="on" value="always_on">Always On</option>
                         <option class="off" value="off" selected="selected">Off</option>
                         <option class="on-for" value="on_for">On for:</option>
@@ -128,7 +128,7 @@
                     <div class="duration-group">
                         <span class="dropdown-Duration">Light Duration</span>
                         <br>
-                        <input type="number" class="input-field" style="width:145px;" placeholder="Time light stays on for" maxlength="3" min="1" max="999" step="1">
+                        <input type="number" class="input-field" id = "duration" style="width:145px;" placeholder="Time light stays on for" maxlength="3" min="1" max="999" step="1">
 
                     </div>
 
@@ -144,10 +144,10 @@
                 <a href="#lane">
                     <div class="sprite" id="basiclanebutton"></div>
                 </a>
-                <form class="form" id="basiclaneform" action="javascript:addCode('lane')">
+                <form class="form" id="basiclaneform" action="javascript:addCode('lane', 'bas')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" class="cars-dropdown" id = "laneCar">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -155,9 +155,9 @@
 
                     <span class="dropdown-speed">Speed</span>  <span class="dropdown-lane">Lane</span>
                     <br>
-                    <input type="number" class="input-field" style="width:60px;" placeholder="0-200"  min="0" max="200" step="any" maxlength="4" required>
+                    <input type="number" class="input-field" id = "speedLane" style="width:60px;" placeholder="0-200"  min="0" max="200" step="any" maxlength="4" required>
 
-                    <input type="number" class="input-field" style="width:60px; margin-left:10px;" placeholder="+-10" maxlength="3" min="-10" max="10" step="1" required>
+                    <input type="number" class="input-field" id = "lane" style="width:60px; margin-left:10px;" placeholder="+-10" maxlength="3" min="-10" max="10" step="1" required>
 
                     <div class="form-buttons">
                         <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
@@ -169,7 +169,7 @@
                 <a href="#wait">
                     <div id="basicwaitbutton"></div>
                 </a>
-                <form class="form" id="basicwaitform" action="javascript:addCode('wait')">
+                <form class="form" id="basicwaitform" id = "waitCar" action="javascript:addCode('wait', 'bas')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
                     <select style="width:130px;" class="cars-dropdown">
@@ -181,7 +181,7 @@
 
                     <span class="dropdown-wait">Wait Time</span>
                     <br>
-                    <input type="number" class="input-field" style="width:140px;" placeholder="Time in Seconds" maxlength="3" min="1" max="999" step="1" required>
+                    <input type="number" class="input-field" id = "time" style="width:140px;" placeholder="Time in Seconds" maxlength="3" min="1" max="999" step="1" required>
 
                     <div class="form-buttons">
                         <input type="reset" value="" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'" class="resetbutton">
@@ -198,10 +198,10 @@
                 <a href="#">
                     <div class="sprite" id="advspeedbutton"></div>
                 </a>
-                <form class="form" id="advspeedform" action="something.asp">
+                <form class="form" id="advspeedform" action="javascript:addCode('speed', 'adv')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" class="cars-dropdown" id = "advSpeedCar">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -223,10 +223,10 @@
                 <a href="#">
                     <div class="sprite" id="advlightsbutton"></div>
                 </a>
-                <form class="form" id="advlightsform" action="something.asp">
+                <form class="form" id="advlightsform" action="javascript:addCode('lights', 'adv')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" class="cars-dropdown" id = "advLightCar">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -234,14 +234,14 @@
 
                     <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
                     <br>
-                    <select style="width:70px;" class="location-dropdown">
+                    <select style="width:70px;" class="location-dropdown" id = "advLoc">
                         <option value="Front">Front</option>
                         <option value="Top">Top</option>
                         <option value="Tail">Tail</option>
                     </select>
 
 
-                    <select style="width:70px;" class="type-dropdown">
+                    <select style="width:70px;" class="type-dropdown" id = "advType">
                         <option value="Steady">Steady</option>
                         <option value="Flash">Flash</option>
                         <option value="Pulse">Pulse</option>
@@ -250,7 +250,7 @@
                     <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
                     <br>
                     <input type="number" class="input-field" style="width:60px;" placeholder="1-59 sec." maxlength="2" min="1" max="59" step="1" required>
-                    <select style="width:70px;" class="lightstatus-dropdownadv">
+                    <select style="width:70px;" class="lightstatus-dropdownadv" id = "advStatus">
                         <option class="on" value="always_on">Always On</option>
                         <option class="off" value="off" selected="selected">Off</option>
                         <option class="on-for" value="on_for">On for:</option>
@@ -274,10 +274,10 @@
                 <a href="#">
                     <div class="sprite" id="advlanebutton"></div>
                 </a>
-                <form class="form" id="advlaneform" action="something.asp">
+                <form class="form" id="advlaneform" action="javascript:addCode('lane', 'adv')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" class="cars-dropdown" id = "advLaneCar">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -299,10 +299,10 @@
                 <a href="#wait">
                     <div id="advwaitbutton"></div>
                 </a>
-                <form class="form" id="advwaitform" action="something.asp">
+                <form class="form" id="advwaitform" action="javascript:addCode('wait', 'adv')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown">
+                    <select style="width:130px;" class="cars-dropdown" id = "advWaitCar">
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -338,7 +338,7 @@
 
         <div class="prntscreenstyle">
             <div id="columns">
-                <!--<div class="column" draggable="true" id = 'AddSpeed' data-car data-speed data-accel data-full style="display:none;"><header>SET SPEED</header></div>
+                <div class="column" draggable="true" id = 'AddSpeed' data-car data-speed data-accel data-full style="display:none;"><header>SET SPEED</header></div>
                 <div class="column" draggable="true" id = 'SetLane' data-car data-speed data-lane style="display:none;"><header>SET LANE</header></div>
                 <div class="column" draggable="true" id = 'SetLights' data-car style="display:none;"><header>SET LIGHTS</header></div></div>
                 <div class="column" draggable="true" id = 'Wait' style="display:none;"><header>WAIT</header></div></div>
@@ -346,8 +346,8 @@
                     <li>
                     
                     </li>
-                </ul>-->
-                <div class="column" draggable="true" id = 'AddSpeed' data-car='myCar' data-speed='55' data-accel='10' data-full><header>SET SPEED</header>  
+                </ul>
+                <!--<div class="column" draggable="true" id = 'AddSpeed' data-car='myCar' data-speed='55' data-accel='10' data-full><header>SET SPEED</header>  
                 <body>
                 <div id="myResults"></div>
                 <script type="text/javascript">
@@ -377,7 +377,7 @@
                 <div class="column" draggable="true" id = 'SetLights' data-car='myCar'><header>SET LIGHTS</header></div>
                 <div class="column" draggable="true" id = 'Something'><header>WAIT</header></div>
             </div>
-            </div>
+            </div-->
 
 
         </div>
@@ -388,130 +388,5 @@
 
 </body>
     
-<script>
-    
-    function addCode(block) {
-        var type, text = "", values;
-        if(block == "speed") {
-            /*type = document.getElementById("AddSpeed").clone(true);
-            type.style.display = "block";
-            type = "<div class='column' draggable='true' id = 'AddSpeed' data-car data-speed data-accel><header>SPEED</header> <div id='data'></div></div>";
-            type.data("speed", speedField.value); 
-            text += type.dataset.speed + " ";
-            type.getElementById('data').innerHTML = text;
-            values = $('input#speedField').val();
-            text += values;
-            type.getElementById('data').innerHTML = text;*/
-            $("#columns").append($("#AddSpeed").clone(true, true));
-        }
-        else if(block == "lights") {
-            type = "<div class='column' draggable='true'><header>LIGHTS</header> <div id='data'></div></div>";
-            $("#columns").append(type);
-        }
-        else if(block == "lane") {
-            type = "<div class='column' draggable='true'><header>LANE</header> <div id='data'></div></div>";
-            $("#columns").append(type);
-        }
-        else if(block == "wait") {
-            type = "<div class='column' draggable='true'><header>WAIT</header> <div id='data></div></div>";
-            $("#columns").append(type);        
-        }
-    }
-    
-    </script>
-<!--Drag and drop script-->
-<script>
-function handleDragStart(e) {
-  this.style.opacity = '1';  // this / e.target is the source node.
-}
-
-function handleDragOver(e) {
-  if (e.preventDefault) {
-    e.preventDefault(); // Necessary. Allows us to drop.
-  }
-
-  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-
-  return false;
-}
-
-function handleDragEnter(e) {
-  // this / e.target is the current hover target.
-  this.classList.add('over');
-}
-
-function handleDragLeave(e) {
-  this.classList.remove('over');  // this / e.target is previous target element.
-}
-
-var cols = document.querySelectorAll('#columns .column');
-[].forEach.call(cols, function(col) {
-  col.addEventListener('dragstart', handleDragStart, false);
-  col.addEventListener('dragenter', handleDragEnter, false);
-  col.addEventListener('dragover', handleDragOver, false);
-  col.addEventListener('dragleave', handleDragLeave, false);
-});
-    
-function handleDrop(e) {
-  // this / e.target is current target element.
-
-  if (e.stopPropagation) {
-    e.stopPropagation(); // stops the browser from redirecting.
-  }
-
-  // See the section on the DataTransfer object.
-
-  return false;
-}
-
-function handleDragEnd(e) {
-  // this/e.target is the source node.
-
-  [].forEach.call(cols, function (col) {
-    col.classList.remove('over');
-  });
-}
-
-var cols = document.querySelectorAll('#columns .column');
-[].forEach.call(cols, function(col) {
-  col.addEventListener('dragstart', handleDragStart, false);
-  col.addEventListener('dragenter', handleDragEnter, false)
-  col.addEventListener('dragover', handleDragOver, false);
-  col.addEventListener('dragleave', handleDragLeave, false);
-  col.addEventListener('drop', handleDrop, false);
-  col.addEventListener('dragend', handleDragEnd, false);
-});
-    
-var dragSrcEl = null;
-
-function handleDragStart(e) {
-  // Target (this) element is the source node.
-  this.style.opacity = '1';
-
-  dragSrcEl = this;
-
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', this.innerHTML);
-}
-
-function handleDrop(e) {
-  // this/e.target is current target element.
-
-  if (e.stopPropagation) {
-    e.stopPropagation(); // Stops some browsers from redirecting.
-  }
-
-  // Don't do anything if dropping the same column we're dragging.
-  if (dragSrcEl != this) {
-    // Set the source column's HTML to the HTML of the column we dropped on.
-    dragSrcEl.innerHTML = this.innerHTML;
-    this.innerHTML = e.dataTransfer.getData('text/html');
-    var x = e.dataTransfer.getData('text/html');
-  }
-  
-  return false;
-}
-    
-    </script>
     
 </html>
