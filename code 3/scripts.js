@@ -223,7 +223,7 @@ $(document).ready(function () {
                 pulldown = document.getElementById("advWaitCar");
             }
             text += "Car = " + pulldown.options[pulldown.selectedIndex].text + " ";
-            text += form.elements[1].value;
+            text += "Time = " + form.elements[1].value;
             $("#columns").append(type);
             document.getElementById("columns").lastChild.innerHTML = '<header>WAIT</header> <body>' + text +' </body>';
         }
