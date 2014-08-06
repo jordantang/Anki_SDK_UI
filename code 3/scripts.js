@@ -155,11 +155,7 @@ $(document).ready(function () {
             text += "Car = " + pulldown.options[pulldown.selectedIndex].text + " ";
             text += "Speed = " + form.elements[1].value + " ";
             text += "Acceleration = " + form.elements[2].value;
-            //type.getElementById($("#data")).id = "data"+count;
-            //data = "#data"+count++;
-            //document.getElementById($(data)).innerHTML = text;
             $("#columns").append(type);
-            //id = document.getElementById($("#columns")).lastChild.id;
             document.getElementById("columns").lastChild.innerHTML = '<header>SPEED</header> <body>' + text +' </body>';
         }
         else if(block == "lights") {
@@ -175,6 +171,9 @@ $(document).ready(function () {
                 text += "Start Time = " + form.elements[3].value + " ";
                 pulldown = document.getElementById("status");
                 text += "Status = " + pulldown.options[pulldown.selectedIndex].text;
+                if(pulldown.options[pulldown.selectedIndex].text == "On for:") {
+                    text += " " + form.elements[5].value + " seconds";
+                }
             }
             else {
                 form = document.getElementById("advlightsform");
@@ -187,8 +186,10 @@ $(document).ready(function () {
                 text += "Start Time = " + form.elements[3].value + " ";
                 pulldown = document.getElementById("advStatus");
                 text += "Status = " + pulldown.options[pulldown.selectedIndex].text;
+                if(pulldown.options[pulldown.selectedIndex].text == "On for:") {
+                   text += " " + form.elements[5].value + " seconds";
+                }
             }
-            
             $("#columns").append(type);
             document.getElementById("columns").lastChild.innerHTML = '<header>LIGHTS</header> <body>' + text +' </body>';
         }
