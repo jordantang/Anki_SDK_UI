@@ -1,3 +1,4 @@
+var address = "192.168.0.210:2500"
 
         $(document).ready(function () {
             $(".difficultybutton").click(function () {
@@ -139,7 +140,8 @@ $(document).ready(function () {
                 }
             });
         });
-    
+
+    //Function for adding blocks and implementing drag and drop functionality
     function addCode(block, mode) {
         var type, text = "", form, count = 0, pulldown;
         if(block == "speed") {
@@ -159,7 +161,7 @@ $(document).ready(function () {
             document.getElementById("columns").lastChild.innerHTML = '<header>SPEED</header> <body>' + text +' </body>';
         }
         else if(block == "lights") {
-            type = "<div class='column' draggable='true' data-car data-loc data-type data-start data-light><header>LIGHTS</header> <body><style='color:#000000' id='data'></body></div>";
+            type = "<div class='column' draggable='true'><header>LIGHTS</header> <body><style='color:#000000' id='data'></body></div>";
             if(mode == "bas") {
                 form = document.getElementById("basiclightsform");
                 pulldown = document.getElementById("lightCar");
@@ -282,16 +284,6 @@ function handleDragEnd(e) {
     col.classList.remove('over');
   });
 }
-
-/*var cols = document.querySelectorAll('#columns .column');
-[].forEach.call(cols, function(col) {
-  col.addEventListener('dragstart', handleDragStart, false);
-  col.addEventListener('dragenter', handleDragEnter, false)
-  col.addEventListener('dragover', handleDragOver, false);
-  col.addEventListener('dragleave', handleDragLeave, false);
-  col.addEventListener('drop', handleDrop, false);
-  col.addEventListener('dragend', handleDragEnd, false);
-});*/
     
 var dragSrcEl = null;
 
@@ -321,4 +313,14 @@ function handleDrop(e) {
   }
   
   return false;
+}
+
+function createCommands() {
+    var cols = document.querySelectorAll('#columns .column');
+    var xmlhttp = new XMLHttpRequest();
+    var url = address + "/connect/D3:CD:15:61:39:A0";
+    var socket = new io.Socket();
+    socket.connect('http://' + address + "/connect/D3:CD:15:61:39:A0");
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }

@@ -15,7 +15,7 @@
     <div class="wrapper">
 
         <a href="#">
-            <div class="sprite runbutton"></div>
+            <div class="sprite runbutton" action="http://192.168.0.210:2500/connect/D3:CD:15:61:39:A0" target = "_blank"></div>
         </a>
         <a href="#">
             <div class="sprite clearallbutton"></div>
@@ -226,7 +226,7 @@
                 <form class="form" id="advlightsform" action="javascript:addCode('lights', 'adv')">
                     <span class="dropdown-cars">Cars</span>
                     <br>
-                    <select style="width:130px;" class="cars-dropdown" id = "advLightCar">
+                    <select style="width:130px;" id = "advLightCar" class="cars-dropdown" >
                         <option value="PHP">Car_001</option>
                         <option value="PHP">Car_002</option>
                         <option value="PHP">Car_003</option>
@@ -234,14 +234,14 @@
 
                     <span class="dropdown-location">Location</span>  <span class="dropdown-type">Type</span>
                     <br>
-                    <select style="width:70px;" class="location-dropdown" id = "advLoc">
+                    <select style="width:70px;" id = "advLoc" class="location-dropdown">
                         <option value="Front">Front</option>
                         <option value="Top">Top</option>
                         <option value="Tail">Tail</option>
                     </select>
 
 
-                    <select style="width:70px;" class="type-dropdown" id = "advType">
+                    <select style="width:70px;" id = "advType" class="type-dropdown">
                         <option value="Steady">Steady</option>
                         <option value="Flash">Flash</option>
                         <option value="Pulse">Pulse</option>
@@ -250,7 +250,7 @@
                     <span class="dropdown-startTime">StartTime</span>  <span class="dropdown-lightstatus">Light Status</span>
                     <br>
                     <input type="number" class="input-field" style="width:60px;" placeholder="1-59 sec." maxlength="2" min="1" max="59" step="1" required>
-                    <select style="width:70px;" class="lightstatus-dropdownadv" id = "advStatus">
+                    <select style="width:70px;" id = "advStatus" class="lightstatus-dropdownadv">
                         <option class="on" value="always_on">Always On</option>
                         <option class="off" value="off" selected="selected">Off</option>
                         <option class="on-for" value="on_for">On for:</option>
@@ -335,7 +335,10 @@
 
 
         <!--THIS IS WHERE THE TEXT BOX SITS.-->
-
+        <!--<button type = "button" action="http://192.168.0.210:2500/connect/D3:CD:15:61:39:A0">Connect</button>-->
+        <form action="http://192.168.0.210:2500/connect/D3:CD:15:61:39:A0" target = "_blank">
+        <input type="submit" value="Connect">
+        </form>
         <div class="prntscreenstyle">
             <div id="columns">
                 <div class="column" draggable="true" id = 'AddSpeed' data-car data-speed data-accel data-full style="display:none;"><header>SET SPEED</header></div>
