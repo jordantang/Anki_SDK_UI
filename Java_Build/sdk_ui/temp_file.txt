@@ -1,3 +1,0 @@
-if Scan_cars('Enter String Here', 1) > 1:
-Connect_car('Enter String Here', 'Enter String Here')
-Scan_cars('Enter String Here', 99#End

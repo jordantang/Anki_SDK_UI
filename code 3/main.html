@@ -336,9 +336,11 @@
 
         <!--THIS IS WHERE THE TEXT BOX SITS.-->
         <!--<button type = "button" action="http://192.168.0.210:2500/connect/D3:CD:15:61:39:A0">Connect</button>-->
-        <form action="http://192.168.0.210:2500/connect/D3:CD:15:61:39:A0" target = "_blank">
+        <form action="javascript:connect()">
         <input type="submit" value="Connect">
         </form>
+        
+        
         <div class="prntscreenstyle">
             <div id="columns">
                 <div class="column" draggable="true" id = 'AddSpeed' data-car data-speed data-accel data-full style="display:none;"><header>SET SPEED</header></div>

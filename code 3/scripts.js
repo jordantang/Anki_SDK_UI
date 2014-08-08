@@ -315,6 +315,17 @@ function handleDrop(e) {
   return false;
 }
 
+function connect() {
+    $(function() {
+      $('form').submit(function(){
+        $.post('http://192.168.0.210:2500/connect/D3:CD:15:61:39:A0', function() {
+        window.location = 'http://127.0.0.1:49814/main.html';
+        });
+        return false;
+      });
+    }); 
+}
+
 function createCommands() {
     var cols = document.querySelectorAll('#columns .column');
     var xmlhttp = new XMLHttpRequest();
