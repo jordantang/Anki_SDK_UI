@@ -74,7 +74,6 @@ def main(argv):
 		if((time.clock() - start) > 15)
 			#turn off lights
 		for y in range(0, num_cars):
-			if 
 
 
 	SDK.ANKI_end()
