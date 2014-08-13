@@ -33,6 +33,7 @@ def main(argv):
 	shoot_commands = []
 	place = []
 	turns = 5;
+	count = 0;
 	num_cars = len(argv) - 1
 	starting_offset = 130
 	SDK.ANKI_start()
@@ -52,7 +53,7 @@ def main(argv):
 			subprocess.call(("./" + car_names[y]), shell = True)
 			moves = fopen(car_names[y] + "move").readlines()
 			print moves[0] + " " + commands[0]
-			if energy[y] == 0
+			if energy[y] != 0
 				if moves[0] == commands[0]
 					shoot_commands.append(car_names[y])
 					energy[y] -= 1
@@ -66,8 +67,10 @@ def main(argv):
 					SDK.change_lane(car_names[y], position_info[4 * y - 1], 2)
 					energy[y] -= 0
 				elif moves[0] == commands[4]
-					SDK.set_speed(car_names[y], position_info[4 * y -1] - change_speed, 10)
+					SDK.set_speed(car_names[y], position_info[4 * y - 1] - change_speed, 10)
 					energy[y] += 1
+				if energy[y] == 0
+					place.append(car_names[y]);
 		for z in shoot_commands
 			set_lights(shoot_commands[z], "FRONTL", "FLASH", 1, 4, 1)
 			set_lights(shoot_commands[z], "FRONTR", "FLASH", 1, 4, 1)
@@ -75,8 +78,12 @@ def main(argv):
 			#turn off lights
 		for y in range(0, num_cars):
 
+		del position_info[:]
+		del shoot_commands[:]
+
 
 	SDK.ANKI_end()
+	print ++count + ". " + reversed(place)
 
 main(sys.argv)
 
